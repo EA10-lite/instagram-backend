@@ -9,6 +9,7 @@ require("./structure/config")();
 require("./structure/db")();
 require("./structure/validation")();
 require("./structure/routes")(app);
+require("./structure/prod")(app);
 app.use(error);
 
 const port = process.env.PORT || 5000;
