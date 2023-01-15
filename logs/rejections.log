@@ -1,0 +1,32 @@
+{
+  error: 'REJECTED PROMISE IN INDEX PAGE',
+  level: 'error',
+  message: 'unhandledRejection: REJECTED PROMISE IN INDEX PAGE\n  No stack trace',
+  stack: undefined,
+  exception: true,
+  date: 'Wed Jan 11 2023 01:28:26 GMT-0800 (Pacific Standard Time)',
+  process: {
+    pid: 11992,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\Chris\\Desktop\\Personal_Projects\\instagram-clone\\server',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v16.13.2',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'C:\\Users\\Chris\\Desktop\\Personal_Projects\\instagram-clone\\server\\index.js',
+      'index.js'
+    ],
+    memoryUsage: {
+      rss: 82841600,
+      heapTotal: 60858368,
+      heapUsed: 34982288,
+      external: 40684198,
+      arrayBuffers: 36317518
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 528070 },
+  trace: [],
+  label: 'winston custom format',
+  timestamp: 'Jan-11-2023 01:28:26'
+}
