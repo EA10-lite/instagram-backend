@@ -18,12 +18,6 @@ const login_schema = {
     password: Joi.string().min(8).max(255).required(),
 }
 
-const reset_password_schema = {
-    email: Joi.string().email().min(5).max(50).required(),
-    password: Joi.string().min(8).max(255).required(),
-    confirm_password: Joi.any().equal(Joi.ref('password')).required(),
-}
-
 const user = new mongoose.Schema({
     avatar: { type: String, minLength: 5, maxLength: 255, required: true },
     email: { type: String, minLength: 5, maxLength: 50, required: true, unique: true },
@@ -36,12 +30,11 @@ const user = new mongoose.Schema({
 });
 
 user.methods.generateAuthToken = function(){
-    return jwt.sign({ _id: this._id, username: this.username, avatar: this.avatar }, config.get("jwtPrivateKey"))
+    return jwt.sign({ _id: this._id, username: this.username, avatar: this.avatar }, process.env.JWT_PRIVATE_KEY)
 };
 
 const User = mongoose.model("User", user);
 
 exports.login_schema = login_schema;
 exports.registration_schema = registration_schema;
-exports.reset_password_schema = reset_password_schema;
 exports.User = User;

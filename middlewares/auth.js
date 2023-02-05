@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     if(!token.slice(6)) return res.status(401).send({ error: "Access Denied: No JWT provdide." });
 
     try {
-        const result = jwt.verify(token.slice(6), config.get("jwtPrivateKey"));
+        const result = jwt.verify(token.slice(6), process.env.JWT_PRIVATE_KEY);
         req.user = result;
         
         next();

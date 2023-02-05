@@ -2,7 +2,6 @@
 const { User } = require("../models/users");
 const async_middleware = require("../middlewares/async");
 const { hash_password, compare_password } = require("../utils/hash");
-const cookie = require("cookie");
 
 const login = async_middleware(async (req, res) => {
     let user = await User
@@ -39,22 +38,7 @@ const register_user = async_middleware(async (req, res) => {
     });
 });
 
-const reset_password = async_middleware(async (req, res) => {
-    let user = await User.findOne({ email: req.body.email });
-    if(!user) return res.status(400).send({ error: "invalid email or passowrd" });
-
-    user.password = await hash_password(req.body.password);
-    await user.save();
-
-    res.status(200).send({
-        error: null,
-        message: "password reset successful."
-    });
-});
-
-
 module.exports = {
     login,
     register_user,
-    reset_password,
 }
